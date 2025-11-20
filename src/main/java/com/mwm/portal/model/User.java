@@ -28,7 +28,8 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> filiais;
 
+    // IMPORTANTE: Deixamos em minúsculo para bater com o Frontend e o DataSeeder
     public enum Role {
-        ADMINISTRADOR, EDITOR, LEITOR
+        administrador, editor, leitor
     }
 }

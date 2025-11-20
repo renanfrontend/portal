@@ -18,8 +18,8 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
         return ResponseEntity.ok(service.authenticate(request));
     }
-    
-    // Endpoint temporário para criar o primeiro admin
+
+    // Adicionado endpoint de registro para facilitar seus testes
     @PostMapping("/register")
     public ResponseEntity<AuthResponse> register(@RequestBody AuthRequest request) {
         return ResponseEntity.ok(service.register(request));

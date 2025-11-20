@@ -20,13 +20,15 @@ public class AuthService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    // Método para criar usuário inicial
     public AuthResponse register(AuthRequest request) {
         var user = new User();
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(User.Role.ADMINISTRADOR);
+        
+        // CORREÇÃO: Usando 'administrador' (minúsculo) para bater com o User.java
+        user.setRole(User.Role.administrador);
+        
         repository.save(user);
         var jwtToken = jwtService.generateToken(new SecurityUser(user));
         return AuthResponse.builder().token(jwtToken).build();
